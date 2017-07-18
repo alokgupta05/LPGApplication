@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorAccent"
+    android:padding="20dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:fillViewport="true"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:text="Register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/imageView3"
+                android:textSize="@dimen/sp_30"
+                android:textStyle="bold|italic"
+                android:layout_marginTop="20dp"
+                android:id="@+id/textView4" />
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView4"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:id="@+id/textInputLayout3"
+                android:layout_marginTop="10dp">
+
+                <EditText
+                    android:id="@+id/editTextCustomerName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Customer Name" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textInputLayout3"
+                android:layout_alignLeft="@+id/textInputLayout3"
+                android:id="@+id/textInputLayout4"
+                android:layout_alignStart="@+id/textInputLayout3"
+                android:layout_marginTop="20dp">
+
+                <EditText
+                    android:id="@+id/editTextMobile"
+                    android:layout_width="match_parent"
+                    android:inputType="number"
+                    android:layout_height="wrap_content"
+                    android:hint="Mobile Number" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textInputLayout4"
+                android:layout_alignLeft="@+id/textInputLayout4"
+                android:id="@+id/textInputLayout5"
+                android:layout_alignStart="@+id/textInputLayout4"
+                android:layout_marginTop="20dp">
+
+                <EditText
+                    android:id="@+id/editTextEmailId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Email ID" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textInputLayout5"
+                android:layout_alignLeft="@+id/textInputLayout5"
+                android:layout_alignStart="@+id/textInputLayout5"
+                android:id="@+id/textInputLayout6"
+                android:layout_marginTop="20dp">
+
+                <EditText
+                    android:id="@+id/editTextPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:hint="Password" />
+            </android.support.design.widget.TextInputLayout>
+
+            <TextView
+                android:text="Sign Up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/textView4"
+                android:layout_alignStart="@+id/textView4"
+                android:layout_below="@id/textInputLayout6"
+                android:textSize="@dimen/sp_24"
+                android:textStyle="bold"
+                android:padding="10dp"
+                android:clickable="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="51dp"
+                android:id="@+id/textViewSignUp" />
+            <ImageView
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/logo"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/imageView3" />
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

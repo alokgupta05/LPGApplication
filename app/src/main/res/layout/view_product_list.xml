@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="80dp">
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/sp_20"
+        android:layout_toRightOf="@+id/imageView4"
+        android:layout_marginLeft="10dp"
+        android:textColor="@color/colorAccent"
+        android:layout_marginTop="5dp"
+        android:id="@+id/textViewProductName" />
+
+    <TextView
+        android:text="productVersion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewProductName"
+        android:layout_alignLeft="@+id/textViewProductName"
+        android:layout_marginTop="1dp"
+        android:id="@+id/textViewVersion" />
+
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/ic_keyboard_arrow_right"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="36dp"
+        android:layout_marginEnd="36dp"
+        android:id="@+id/imageView2" />
+
+    <ImageView
+        android:layout_width="55dp"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_home"
+        android:layout_marginLeft="10dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:id="@+id/imageView4" />
+
+    <TextView
+        android:text="Code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewVersion"
+        android:layout_alignLeft="@+id/textViewVersion"
+        android:layout_alignStart="@+id/textViewVersion"
+        android:layout_marginTop="1dp"
+        android:id="@+id/textViewCode" />
+</RelativeLayout>

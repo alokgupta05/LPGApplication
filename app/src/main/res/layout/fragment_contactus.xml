@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:padding="20dp"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:text="Contact Us"
+        android:layout_centerHorizontal="true"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/colorAccent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/sp_30"
+        android:gravity="center"
+
+        android:id="@+id/textView" />
+
+    <TextView
+        android:text="Log Out"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:padding="10dp"
+        android:textSize="@dimen/sp_24"
+        android:layout_marginBottom="20dp"
+        android:textColor="@color/colorAccent"
+        android:id="@+id/textViewLogout" />
+
+    <TextView
+        android:text="@string/address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:textSize="18sp"
+        android:layout_marginTop="68dp"
+        android:id="@+id/textView2" />
+</RelativeLayout>
