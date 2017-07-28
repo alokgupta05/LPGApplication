@@ -31,6 +31,7 @@ public class ProductListFragment extends Fragment {
     private ProductListAdapter mProductListAdapter;
     private TextView mEmptyView;
     private List<ScanProduct> scanProductList;
+    private boolean mIsScrollAllowed;
 
     @Override
     public void onAttach(Context context) {
@@ -49,6 +50,20 @@ public class ProductListFragment extends Fragment {
         }
         mProductListAdapter = new ProductListAdapter(scanProductList);
         mEmptyView = (TextView) view.findViewById(R.id.empty_view);
+        mIsScrollAllowed = true;
+        mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                if(newState == RecyclerView.SCROLL_STATE_IDLE ){
+                    mIsScrollAllowed = true;
+                }else {
+                    mIsScrollAllowed = false;
+                }
+                mProductListAdapter.setScrollAllowed(mIsScrollAllowed);
+                mProductListAdapter.notifyDataSetChanged();
+            }
+        });
 
         RecyclerView.LayoutManager mLayoutManager;
 

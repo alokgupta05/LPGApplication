@@ -41,8 +41,8 @@ public class ScanFragment extends Fragment {
     private String SCAN_ACTION ="http://tempuri.org/GetScanedProductDetails";
     private String NAMESPACE_SCAN ="http://tempuri.org/";
     private String METHOD_NAME_SCAN ="GetScanedProductDetails";
-    private String NO_QRCODE_TEXT = "No QR code is detected. The Product is not Genuine";
-    private String QRCODE_DETECTED = "QR code is detected. The Product is Genuine";
+    private String NO_QRCODE_TEXT = "The Product is not Genuine.";
+    private String QRCODE_DETECTED = "The Product is Genuine.";
     private TextView txtProductName;
 
     @Override

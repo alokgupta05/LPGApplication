@@ -62,7 +62,7 @@ public class ForgotPasswordActivity extends AppCompatActivity
     }
 
     private void  resetPasswordService(View view){
-        if(editText.getText().length()==10)
+        if(editText.getText().length()>=10)
             new CallWebService().execute(editText.getText().toString());
         else{
             Toast.makeText(ForgotPasswordActivity.this,"Please enter a valid number",Toast.LENGTH_LONG).show();

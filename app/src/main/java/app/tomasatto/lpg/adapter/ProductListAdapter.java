@@ -29,6 +29,11 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
     public void setScanProductList(List<ScanProduct> scanProductList) {
         this.scanProductList = scanProductList;
     }
+    public boolean isScrollAllowed = true;
+
+    public void setScrollAllowed(boolean scrollAllowed) {
+        isScrollAllowed = scrollAllowed;
+    }
 
     @Override
     public ProductListAdapter.ProductHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -44,11 +49,15 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
         holder.productVersion.setText(scanProduct.productVersion);
         holder.standardCode.setText(scanProduct.standardCode);
 
-        Picasso.with(holder.productImgUrl.getContext())
-                .load(scanProduct.productImgUrl)
-                .placeholder(R.drawable.ic_image_not_ava) //this is optional the image to display while the url image is downloading
-                .error(R.drawable.ic_image_not_ava)         //this is also optional if some error has occurred in downloading the image this image would be displayed
-                .into(holder.productImgUrl);
+        if(isScrollAllowed) {
+            Picasso.with(holder.productImgUrl.getContext())
+                    .load(scanProduct.productImgUrl)
+                    .placeholder(R.drawable.ic_image_not_ava) //this is optional the image to display while the url image is downloading
+                    .error(R.drawable.ic_image_not_ava)         //this is also optional if some error has occurred in downloading the image this image would be displayed
+                    .into(holder.productImgUrl);
+        }else{
+            holder.productImgUrl.setImageResource(R.drawable.ic_image_not_ava);
+        }
     }
 
     @Override

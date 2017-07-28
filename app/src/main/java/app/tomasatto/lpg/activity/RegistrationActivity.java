@@ -134,9 +134,11 @@ public class RegistrationActivity  extends AppCompatActivity
         protected void onPostExecute(String s) {
             Log.d(TAG,s);
             dismissDialog();
-            if(s== null)
-                s = "Error while Registration";
-            Toast.makeText(RegistrationActivity.this,s,Toast.LENGTH_LONG).show();
+            if(s== null) {
+                Toast.makeText(RegistrationActivity.this, "Error while Registration", Toast.LENGTH_LONG).show();;
+            }else {
+                Toast.makeText(RegistrationActivity.this, "Registered Successfully", Toast.LENGTH_LONG).show();;
+            }
             RegistrationActivity.this.finish();
 
         }
