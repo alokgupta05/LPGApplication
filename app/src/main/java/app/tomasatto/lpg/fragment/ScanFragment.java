@@ -13,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
@@ -108,7 +107,7 @@ public class ScanFragment extends Fragment {
         protected void onPostExecute(SoapObject s) {
             //Log.d(TAG, s);
             dismissDialog();
-            if(s==null || s.getProperty("diffgram")==null || s.getProperty("diffgram")!=null)
+            if(s==null || s.getProperty("diffgram")==null )
                 return;
             try {
 
@@ -208,7 +207,7 @@ public class ScanFragment extends Fragment {
                // Toast.makeText(getActivity(), "No QR code is Detected", Toast.LENGTH_LONG).show();
             } else {
                 //if qr contains data
-                Toast.makeText(getActivity(), result.getContents(), Toast.LENGTH_LONG).show();
+                //Toast.makeText(getActivity(), result.getContents(), Toast.LENGTH_LONG).show();
                 String customerId = ((HomeActivity) getActivity()).getCustomerId();
                 new CallWebService().execute(customerId,result.getContents());
 
