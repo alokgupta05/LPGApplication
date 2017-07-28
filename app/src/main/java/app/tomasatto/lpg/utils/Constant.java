@@ -6,5 +6,5 @@ package app.tomasatto.lpg.utils;
 
 public class Constant {
 
-    public static String BASE_URL ="http://tomasettoindia.com/Api/WebServices.asmx?wsdl";
+    public static String BASE_URL ="https://tomasettoindia.com/Api/WebServices.asmx?wsdl";
 }

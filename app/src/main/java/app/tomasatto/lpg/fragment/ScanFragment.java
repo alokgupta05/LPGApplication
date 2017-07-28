@@ -108,9 +108,13 @@ public class ScanFragment extends Fragment {
         protected void onPostExecute(SoapObject s) {
             //Log.d(TAG, s);
             dismissDialog();
+            if(s==null || s.getProperty("diffgram")==null || s.getProperty("diffgram")!=null)
+                return;
             try {
 
                 SoapObject soapObjectOne = (SoapObject) s.getProperty("diffgram");
+                if(soapObjectOne.getProperty("DocumentElement")==null)
+                    return;
                 SoapObject soapObjectTwo = (SoapObject) soapObjectOne.getProperty("DocumentElement");
                 boolean isProductAvailable = false;
                 for (int i = 0; i < soapObjectTwo.getPropertyCount(); i++) {
@@ -132,6 +136,7 @@ public class ScanFragment extends Fragment {
             }catch (Exception e){
                 txtProductName.setText(NO_QRCODE_TEXT);
                 Log.d("Scan Response", "Error");
+
                 e.printStackTrace();;
             }
            // Toast.makeText(getActivity(), s, Toast.LENGTH_LONG).show();

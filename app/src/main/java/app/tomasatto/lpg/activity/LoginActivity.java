@@ -54,6 +54,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         mSignUpView.setOnClickListener(this);
         mTextInputMobile = (EditText)findViewById(R.id.editTextMobile);
         mTextInputPassword = (EditText)findViewById(R.id.editTextPassword);
+        TextView mTextViewLogin = (TextView)findViewById(R.id.textView5);
+        mTextViewLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                launchForgotPassword(view);
+            }
+        });
     }
 
     @Override
@@ -65,6 +72,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             Intent intentRegistration = new Intent(this,RegistrationActivity.class);
             startActivity(intentRegistration);
         }
+    }
+
+    private void launchForgotPassword(View view){
+        Intent intentForgotPassword = new Intent(this,ForgotPasswordActivity.class);
+        startActivity(intentForgotPassword);
     }
 
     private boolean validationLogin(){
@@ -105,19 +117,23 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         protected void onPostExecute(String customerId) {
             dismissDialog();
             Log.d(TAG,customerId);
-            if(isFinishing() == true)
+            if(customerId== null || isFinishing() == true)
                 return;
             if(customerId.equalsIgnoreCase("0")){
                 Toast.makeText(LoginActivity.this,"Invaild Login Credentials",Toast.LENGTH_LONG).show();
             }else{
-
-                Intent intentRegistration = new Intent(LoginActivity.this,HomeActivity.class);
-                SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
-                editor.putString(CUSTOMER_ID, customerId);
-                editor.apply();
-                editor.commit();
-                startActivity(intentRegistration);
-                LoginActivity.this.finish();
+                try {
+                    Integer.parseInt(customerId);
+                    Intent intentRegistration = new Intent(LoginActivity.this, HomeActivity.class);
+                    SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
+                    editor.putString(CUSTOMER_ID, customerId);
+                    editor.apply();
+                    editor.commit();
+                    startActivity(intentRegistration);
+                    LoginActivity.this.finish();
+                }catch (Exception e){
+                    Toast.makeText(LoginActivity.this,"Invaild Login Credentials",Toast.LENGTH_LONG).show();
+                }
             }
 
         }

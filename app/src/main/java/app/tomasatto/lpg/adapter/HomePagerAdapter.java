@@ -22,7 +22,7 @@ import app.tomasatto.lpg.fragment.ScanFragment;
 
 public class HomePagerAdapter extends FragmentStatePagerAdapter {
 
-    String tabTitles[] = new String[] { "Home", "History", "Profile" };
+    String tabTitles[] = new String[] { "Home", "History", "Contact us" };
     final int[] ICONS = new int[]{
             R.drawable.ic_home,
             R.drawable.ic_history_big,
