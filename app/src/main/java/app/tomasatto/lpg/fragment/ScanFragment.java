@@ -7,6 +7,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -124,15 +125,19 @@ public class ScanFragment extends Fragment {
                 }
                 if(isProductAvailable) {
                     txtProductName.setText(QRCODE_DETECTED);
+                    txtProductName.setTextColor(ContextCompat.getColor(context,android.R.color.black));
                     if(getActivity() instanceof HomeActivity){
                         ((HomeActivity)getActivity()).updateBackUpDate();
                     }
                 }
-                else
+                else {
+                    txtProductName.setTextColor(ContextCompat.getColor(context,android.R.color.holo_red_dark));
                     txtProductName.setText(NO_QRCODE_TEXT);
+                }
 
 
             }catch (Exception e){
+                txtProductName.setTextColor(ContextCompat.getColor(context,android.R.color.holo_red_dark));
                 txtProductName.setText(NO_QRCODE_TEXT);
                 Log.d("Scan Response", "Error");
 

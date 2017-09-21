@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Tomasetto Achille</string>
     <string name="scan_bar_code">Quick Scan</string>
-    <string name="address">Tomasetto Achille India Pvt Ltd.\nAdd: A 8 Gala no. 10 and 11 , Prerana complex, anjur phata, dapoda road, val bhiwandi, thane 421302, Maharashtra. \nEmail : info@tomasettoindia.com</string>
+    <string name="note_register">**This App is dedicatedly used for our Indian Partner &amp; Customers.</string>
+    <string name="address">" Add: A8, Gala No. 10/11, Prerana Complex, Anjur Phata Dapoda Road, Val Village, Bhiwandi, Thane - 421302, Maharashtra, India. \nEmail : info@tomasettoindia.com \nWebsite: www.tomasettoindia.com"</string>
 </resources>

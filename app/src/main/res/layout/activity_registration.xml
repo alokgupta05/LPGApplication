@@ -6,7 +6,7 @@
     android:padding="20dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <ScrollView
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:fillViewport="true"
         android:layout_height="match_parent">
@@ -14,6 +14,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
+
             <TextView
                 android:text="Register"
                 android:layout_width="wrap_content"
@@ -92,18 +94,29 @@
             </android.support.design.widget.TextInputLayout>
 
             <TextView
+                android:text="@string/note_register"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/textInputLayout6"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:textStyle="bold|italic"
+                android:layout_marginTop="30dp"
+                android:id="@+id/textView6" />
+            <TextView
                 android:text="Sign Up"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignLeft="@+id/textView4"
                 android:layout_alignStart="@+id/textView4"
-                android:layout_below="@id/textInputLayout6"
-                android:textSize="@dimen/sp_24"
+                android:layout_below="@id/textView6"
+                android:textSize="@dimen/sp_20"
                 android:textStyle="bold"
                 android:padding="10dp"
                 android:clickable="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="51dp"
+                android:layout_marginTop="30dp"
                 android:id="@+id/textViewSignUp" />
             <ImageView
                 android:layout_width="280dp"
@@ -113,5 +126,5 @@
                 android:layout_centerHorizontal="true"
                 android:id="@+id/imageView3" />
         </RelativeLayout>
-    </ScrollView>
+    </android.support.v4.widget.NestedScrollView>
 </RelativeLayout>
