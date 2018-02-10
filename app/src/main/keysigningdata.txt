@@ -1,0 +1,4 @@
+keystore password : system123
+keyalias : dumm
+keypassword:system123
+keystorepath: C:\Users\Megha\tomasettto.keystore

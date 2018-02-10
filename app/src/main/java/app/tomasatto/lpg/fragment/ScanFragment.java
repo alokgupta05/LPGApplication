@@ -1,11 +1,15 @@
 package app.tomasatto.lpg.fragment;
 
+import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
@@ -14,9 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.google.zxing.integration.android.IntentIntegrator;
-import com.google.zxing.integration.android.IntentResult;
+import android.widget.Toast;
 
 import org.ksoap2.SoapEnvelope;
 import org.ksoap2.serialization.PropertyInfo;
@@ -26,13 +28,18 @@ import org.ksoap2.transport.HttpTransportSE;
 
 import app.tomasatto.lpg.R;
 import app.tomasatto.lpg.activity.HomeActivity;
+import app.tomasatto.lpg.activity.RegistrationActivity;
 import app.tomasatto.lpg.utils.Constant;
+import me.dm7.barcodescanner.zbar.Result;
+import me.dm7.barcodescanner.zbar.ZBarScannerView;
+
+import static android.app.Activity.RESULT_OK;
 
 /**
  * Created by Megha on 07-07-2017.
  */
 
-public class ScanFragment extends Fragment {
+public class ScanFragment extends Fragment  {
 
     private Context context;
     private ProgressDialog mProgressDialog;
@@ -45,6 +52,10 @@ public class ScanFragment extends Fragment {
     private String NO_QRCODE_TEXT = "The Product is not Genuine.";
     private String QRCODE_DETECTED = "The Product is Genuine.";
     private TextView txtProductName;
+    private ZBarScannerView mScannerView;
+    private static final int ZBAR_CAMERA_PERMISSION = 1;
+    private Class<?> mClss;
+
 
     @Override
     public void onAttach(Context context) {
@@ -62,24 +73,27 @@ public class ScanFragment extends Fragment {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startScan();
+                //startScan();
+                //Intent intentScanner= new Intent(getActivity(),SimpleScannerActivity.class);
+                //startActivity(intentScanner);
+                launchActivity(SimpleScannerActivity.class);
+                txtProductName.setText("");
             }
         });
+        //mScannerView = new ZBarScannerView(getActivity());
         return view;
     }
 
-    private void startScan(){
-        txtProductName.setText("");
-        IntentIntegrator integrator = new IntentIntegrator(this.getActivity()).forSupportFragment(this);
-        // use forSupportFragment or forFragment method to use fragments instead of activity
-        //integrator.setDesiredBarcodeFormats(IntentIntegrator.ONE_D_CODE_TYPES);
-        integrator.setOrientationLocked(false);
-        integrator.setPrompt(this.getString(R.string.scan_bar_code));
-        integrator.setBeepEnabled(true);
-        integrator.setBarcodeImageEnabled(true);
-        //integrator.setCameraId(0);  // Use a specific camera of the device
-        integrator.initiateScan();
-
+    public void launchActivity(Class<?> clss) {
+        if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA)
+                != PackageManager.PERMISSION_GRANTED) {
+            mClss = clss;
+            ActivityCompat.requestPermissions(getActivity(),
+                    new String[]{Manifest.permission.CAMERA}, ZBAR_CAMERA_PERMISSION);
+        } else {
+            Intent intent = new Intent(getActivity(), clss);
+            startActivityForResult(intent,101);
+        }
     }
 
     private void showDialog(){
@@ -205,16 +219,16 @@ public class ScanFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
         //retrieve scan result
         //Toast.makeText(getActivity(), "Result  Found", Toast.LENGTH_LONG).show();
-        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
-        if (result != null) {
+
+        if (requestCode == 101 && resultCode == RESULT_OK) {
             //if qrcode has nothing in it
-            if (result.getContents() == null) {
+            if (intent.getStringExtra("ScannedData") == null) {
                // Toast.makeText(getActivity(), "No QR code is Detected", Toast.LENGTH_LONG).show();
             } else {
                 //if qr contains data
                 //Toast.makeText(getActivity(), result.getContents(), Toast.LENGTH_LONG).show();
                 String customerId = ((HomeActivity) getActivity()).getCustomerId();
-                new CallWebService().execute(customerId,result.getContents());
+                new CallWebService().execute(customerId,intent.getStringExtra("ScannedData"));
 
             }
         }
